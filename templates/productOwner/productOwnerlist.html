@@ -1,0 +1,36 @@
+{% extends "productOwner/productOwnerbase.html" %}
+{% block title %}All Cargos{% endblock %}
+
+
+{% block content %}
+<div class="container"> 
+    <div class="row">
+        <div class="col-md-12">
+            <h3>All Product list</h3><hr>
+            <a href="{% url 'ecomapp:poproductcreate' %}">Add New Product</a>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>SN</th>
+                        <th>Product Title</th>
+                        <th>Image</th>
+                        <th>Adress</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in allproducts %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{p.CampanyName}}</td>
+                        <td><img src="{{p.image.url}}" style="height: 60px;" alt=""></td>
+                        <td>{{p.address}}</td>
+                        <td>{{p.price}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

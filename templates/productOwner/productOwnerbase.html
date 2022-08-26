@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- <div class="container"> -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+        <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
+        <ul class="navbar-nav mr-auto" style="align-items: center;">
+
+            <li>
+                <a class="nav-link" href="{% url 'ecomapp:home' %}">Home</a> 
+            </li>
+
+            <li>
+                <!-- <a class="nav-link" href="{% url 'ecomapp:home' %}">Home <span class="sr-only">(current)</span></a> -->
+                <a class="nav-link" href="{% url 'ecomapp:poproductlist' %}">All Products</a> 
+            </li>
+            <li>
+                <a class="nav-link" href="{% url 'ecomapp:pohome' %}" target="_blank">product Owner Home</a>
+            </li>
+
+        </ul>
+    </nav>
+    </div>
+    {% block content %}
+
+    {% endblock %}
+</body>
+</html>
