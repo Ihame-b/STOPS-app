@@ -1,5 +1,5 @@
 from django import forms
-from .models import Cargo, Order, Customer, Product
+from .models import Cargo, Order, Customer, Product, ProductOwner
 from django.contrib.auth.models import User
 
 
@@ -26,6 +26,24 @@ class CustomerRegistrationForm(forms.ModelForm):
                 "Customer with this username already exists.")
 
         return uname
+
+
+class productOwnerRegistrationForm(forms.ModelForm):
+    username = forms.CharField(widget=forms.TextInput())
+    password = forms.CharField(widget=forms.PasswordInput())
+    email = forms.CharField(widget=forms.EmailInput())
+
+    class Meta:
+        model = ProductOwner
+        fields = ["username", "password", "email", "full_name","mobile"]
+
+    def clean_username(self):
+        uname = self.cleaned_data.get("username")
+        if User.objects.filter(username=uname).exists():
+            raise forms.ValidationError(
+                "Customer with this username already exists.")
+
+        return uname        
 
 
 class CustomerLoginForm(forms.Form):

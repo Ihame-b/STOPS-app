@@ -284,6 +284,27 @@ class EsewaVerifyView(View):
             return redirect("/esewa-request/?o_id="+order_id)
 
 
+class ProductOwnerRegistrationView(CreateView):
+    template_name = "customerregistration.html"
+    form_class = productOwnerRegistrationForm
+    success_url = reverse_lazy("ecomapp:home")
+
+    def form_valid(self, form):
+        username = form.cleaned_data.get("username")
+        password = form.cleaned_data.get("password")
+        email = form.cleaned_data.get("email")
+        user = User.objects.create_user(username, email, password)
+        form.instance.user = user
+        login(self.request, user)
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        if "next" in self.request.GET:
+            next_url = self.request.GET.get("next")
+            return next_url
+        else:
+            return self.success_url
+
 class CustomerRegistrationView(CreateView):
     template_name = "customerregistration.html"
     form_class = CustomerRegistrationForm
@@ -304,6 +325,7 @@ class CustomerRegistrationView(CreateView):
             return next_url
         else:
             return self.success_url
+
 
 
 class CustomerLogoutView(View):
@@ -415,7 +437,7 @@ class PasswordForgotView(FormView):
             text_content + html_content,
             settings.EMAIL_HOST_USER,
             [email],
-            fail_silently=False,
+            fail_silently=True,
         )
         return super().form_valid(form)
 
@@ -595,10 +617,31 @@ class AdminCargoStatuChangeView(LinfoxRequiredMixin, View):
         return redirect(reverse_lazy("ecomapp:adminocargodetail", kwargs={"pk": order_id}))             
 
 
-#product owner Page
+# class RegistrationView(CreateView):
+#     template_name = "productownerregistration.html"
+#     form_class = productOwnerRegistrationForm
+#     success_url = reverse_lazy("ecomapp:home")
+
+#     def form_valid(self, form):
+#         username = form.cleaned_data.get("username")
+#         password = form.cleaned_data.get("password")
+#         email = form.cleaned_data.get("email")
+#         user = User.objects.create_user(username, email, password)
+#         form.instance.user = user
+#         login(self.request, user)
+#         return super().form_valid(form)
+
+#     def get_success_url(self):
+#         if "next" in self.request.GET:
+#             next_url = self.request.GET.get("next")
+#             return next_url
+#         else:
+#             return self.success_url
+
+# product owner Page
 
 class productOwnerLoginView(FormView):
-    template_name = "/home/ihame/Documents/MyProject/templates/productOwner/ProductOwnerlogin.html"
+    template_name = "productOwner/ProductOwnerlogin.html"
     form_class = CustomerLoginForm
     success_url = reverse_lazy("ecomapp:pohome")
 
@@ -628,6 +671,14 @@ class productOwnerListView(productOwnerRequiredMixin, ListView):
     template_name = "productOwner/productOwnerlist.html"
     queryset = Product.objects.all().order_by("-id")
     context_object_name = "allproducts"
+
+class productOwner1ListView(productOwnerRequiredMixin, ListView):
+    template_name = "productOwner/productOwnerlist.html"
+    queryset = User.objects.all().order_by("-id")
+    context_object_name = "alluser"
+
+# def sample_view(request):
+#     current_user = request.user
 
 class productOwnerCreateView(productOwnerRequiredMixin, CreateView):
     template_name = "productOwner/productCreatePcreate.html"

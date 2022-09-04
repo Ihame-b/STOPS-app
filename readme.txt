@@ -2,15 +2,15 @@ To run this project in your computer, follow the steps below
 -------------------------------------------------------------
 Step 1. Make and activate virtual Environment in your computer
     In windows
-    > virtualenv ecom
+    > virtualenv env
     > Scripts\activate
     In mac and linux
-    $ virtualenv ecom
+    $ virtualenv env
     $ source bin/activate
 
 Step 2. Clone the project
-    $ git clone https://gitlab.com/ecedreamer/ecomtuts.git
-    $ cd ecomtuts
+    $ git clone https://github.com/Ihame-b/STOPS-app.git
+    $ cd STOPS-app
     if you donot have git in your computer, install it before and clone it again.
 
 Step 3: Install dependencies 

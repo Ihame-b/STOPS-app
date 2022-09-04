@@ -78,7 +78,7 @@ urlpatterns = [
     path("po-pro/list/", productOwnerListView.as_view(), name="poproductlist"),
     path("po-pro/add/",  productOwnerCreateView.as_view(), name="poproductcreate"),
 
-
+    path("poregister/", ProductOwnerRegistrationView.as_view(), name="poregistration"),
   
 
 ]

@@ -1,3 +1,4 @@
+from tokenize import String
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
@@ -60,6 +61,7 @@ class Product(models.Model):
     warranty = models.CharField(max_length=300, null=True, blank=True)
     return_policy = models.CharField(max_length=300, null=True, blank=True)
     view_count = models.PositiveIntegerField(default=0)
+    productowner=models.CharField(User.get_full_name, max_length=300, default="ihamegrbt@gmail.com")
 
     def __str__(self):
         return self.title

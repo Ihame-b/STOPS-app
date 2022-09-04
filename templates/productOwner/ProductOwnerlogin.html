@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Linfox Login{% endblock %}
+{% block title %}Product Owner Login{% endblock %}
 
 {% block content %}
 <style>
@@ -11,12 +11,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 mx-auto">
-            <h3>Linfox Login Form</h3>
+            <h3>productOwner Login Form</h3>
             <hr>
             <form action="" method="POST">
                 {% csrf_token %}
                 {{form.as_p}}
-                <button class="btn btn-primary">Login as a Linfox</button>
+                <button class="btn btn-primary">Login as a productOwner</button>
                 {% if error %}
                 <li style="color: red;">{{error}}</li>
                 {% endif %}

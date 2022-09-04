@@ -1,12 +1,12 @@
 {% extends "productOwner/productOwnerbase.html" %}
 
-{% block title %}Linfox Home{% endblock %}
+{% block title %}productOwner Home{% endblock %}
 
 {% block content %}
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h3>Pending Cargo</h3>
+            <h3>all product</h3>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -21,10 +21,10 @@
                     {% for p in allproducts %}
                     <tr>
                         <td>{{forloop.counter}}</td>
-                        <td>{{p.CampanyName}}</td>
+                        <td>{{p.title}}</td>
                         <td><img src="{{p.image.url}}" style="height: 60px;" alt=""></td>
-                        <td>{{p.address}}</td>
-                        <td>{{p.price}}</td>
+                        <td>{{p.warranty}}</td>
+                        <td>{{p.selling_price}}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
