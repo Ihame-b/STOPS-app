@@ -433,7 +433,7 @@ class PasswordForgotView(FormView):
         html_content = url + "/password-reset/" + email + \
             "/" + password_reset_token.make_token(user) + "/"
         send_mail(
-            'Password Reset Link | Django Ecommerce',
+            'Password Reset Link | Django STOPPS',
             text_content + html_content,
             settings.EMAIL_HOST_USER,
             [email],
